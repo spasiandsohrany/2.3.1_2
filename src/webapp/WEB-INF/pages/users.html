@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<tbody>
+<div align="center">
+    <h2>User Manager</h2>
+<!--    th:each="user : ${users}">-->
+<!--    <form th:action="@{/users/{id}(id=${us})method="get" action="search">-->
+<!--    <input type="text" name="keyword" />-->
+<!--    <input type="submit" value="Search" />-->
+    </form>
+    <h3><a th:href="@{users/new}">New User</a></h3>
+    <table border="1" cellpadding="5">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.firstName}"></td>
+            <td th:text="${user.lastName}"></td>
+            <td th:text="${user.email}"></td>
+            <td>
+            <a th:href="@{users/edit/{id}(id=${user.getId()})}">Edit</a>
+
+            <a th:href="@{users/delete/{id}(id=${user.getId()})}">Delete</a>
+            </td>
+        </tr>
+    </table>
+    </div>
+    </tbody>
+</html>
