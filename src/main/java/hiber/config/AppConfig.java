@@ -60,5 +60,4 @@ public class AppConfig {
 
         return transactionManager;
     }
-
 }

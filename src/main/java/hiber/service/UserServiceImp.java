@@ -1,6 +1,6 @@
 package hiber.service;
 
-import hiber.dao.UserDAO;
+import hiber.dao.UserDao;
 import hiber.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,30 +11,30 @@ import java.util.List;
 public class UserServiceImp implements UserService{
 
     @Autowired
-    private UserDAO userDAO;
+    private UserDao userDao;
 
     @Override
     public void createUser(User user) {
-        userDAO.createUser(user);
+        userDao.createUser(user);
     }
 
     @Override
     public void updateUser(User user) {
-        userDAO.updateUser(user);
+        userDao.updateUser(user);
     }
 
     @Override
     public void deleteUser(int id) {
-        userDAO.deleteUser(id);
+        userDao.deleteUser(id);
     }
 
     @Override
     public List<User> getAllUsers() {
-        return userDAO.getAllUsers();
+        return userDao.getAllUsers();
     }
 
     @Override
     public User getUserById(int id) {
-        return userDAO.getUserById(id);
+        return userDao.getUserById(id);
     }
 }

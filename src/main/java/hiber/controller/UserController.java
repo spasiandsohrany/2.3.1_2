@@ -65,14 +65,4 @@ public class UserController {
         userService.deleteUser(id);
         return "redirect:/users";
     }
-
-
-
-
-
-    /*@RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveCustomer(@ModelAttribute("user") User user) {
-        userService.createUser(user);
-        return "redirect:/";
-    }*/
 }

@@ -2,10 +2,7 @@ package hiber.dao;
 
 import hiber.model.User;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.transaction.TransactionStatus;
 
-import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -13,9 +10,8 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
-public class UserDAOImpl implements UserDAO {
+public class UserDaoImpl implements UserDao {
 
-    private PlatformTransactionManager transactionManager;
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -38,6 +34,7 @@ public class UserDAOImpl implements UserDAO {
         entityManager.remove(user);
     }
 
+    @Transactional
     @Override
     public List<User> getAllUsers() {
         TypedQuery<User> query = entityManager.createQuery("SELECT u FROM User u", User.class);
