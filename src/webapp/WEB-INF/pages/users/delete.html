@@ -3,11 +3,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Delete User</title>
 </head>
 <body>
 <div align="center">
-  <h2>New User</h2>
+  <h2>Delete User</h2>
   <form th:action="@{/users/delete/{id}(id=${user.getId()})}" th:object="${user}" th:method="POST">
     <label for="id">id:</label>
     <input type="text" id="id" th:field="*{id}"/>

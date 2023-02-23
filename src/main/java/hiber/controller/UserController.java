@@ -16,32 +16,31 @@ public class UserController {
 
     private final UserService userService;
 
-    @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
     @GetMapping()
-    public String index(Model model) {
+    public String getListUser(Model model) {
         List<User> users = userService.getAllUsers();
         model.addAttribute("users", users);
         return "/users";
     }
 
     @GetMapping("/new")
-    public String newUser(Model model) {
+    public String addUserForm(Model model) {
         model.addAttribute("user", new User());
         return "users/new";
     }
 
     @PostMapping()
-    public String add(@ModelAttribute("user") User user) {
+    public String addUser(@ModelAttribute("user") User user) {
         userService.createUser(user);
         return "redirect:/users";
     }
 
     @GetMapping("/edit/{id}")
-    public String showEditUserForm(@PathVariable("id") int id, Model model) {
+    public String editUserForm(@PathVariable("id") int id, Model model) {
         User user = userService.getUserById(id);
         model.addAttribute("user", user);
         return "users/edit";
@@ -54,7 +53,7 @@ public class UserController {
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteUserById(@PathVariable("id") int id, Model model) {
+    public String deleteUserForm(@PathVariable("id") int id, Model model) {
         User user = userService.getUserById(id);
         model.addAttribute("user", user);
         return "users/delete";
